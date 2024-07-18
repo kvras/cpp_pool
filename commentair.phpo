@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Sans Titre</title>
+<meta http-equiv="content-type" content="text/html; charset=window-1256" />
+
+</head>
+<body bgcolor="#FFFFFF">
+<form name="form" method="post" action="modifcommentaire.php" >
+<?php
+    if ($_POST['passe']=="CHb@intc"){
+   include('connect.php');
+   if  ($_POST['page']!==""){
+       $champ= $_POST['page'];
+        $query = "SELECT  * FROM tbcommentaire WHERE page LIKE '%".$champ."%' ORDER BY dat DESC"  ;
+
+      }
+   elseif ($_POST['dat']!==""){
+          $champ= $_POST['dat'];
+          $query = "SELECT  * FROM tbcommentaire WHERE dat LIKE '%".$champ."%' ORDER BY dat DESC"  ;
+        }
+    elseif ($_POST['ville']!==""){
+          $champ= $_POST['ville'];
+          $query = "SELECT  * FROM tbcommentaire WHERE ville LIKE '%".$champ."%' ORDER BY dat DESC"  ;
+        }
+
+     elseif ($_POST['commentaire']!==""){
+          $champ= $_POST['commentaire'];
+          $query = "SELECT  * FROM tbcommentaire WHERE commentaire LIKE '%".$champ."%' ORDER BY dat DESC"  ;
+        }
+     else  {
+          $query = "SELECT  * FROM tbcommentaire  ORDER BY dat DESC"  ;
+
+
+     }
+
+  $result = $bdpdo->query($query);//or die('Erreur SQL !<br />');//.$result.'<br />'//.mysql_error());
+
+   if ($result){
+       $i=$result->rowCount();
+       $j=1;
+      while($row =$result->fetch()){  ?>
+
+                 <?php
+
+                $num = $row[1];
+                $page = $row[2];
+                $email = $row[3];
+                $commentaire = $row[4];
+                $nom = $row[5];
+                $dat = $row[6];
+                $ip = $row[7];
+                $ville = $row[8];
+                $accepte = $row[9];
+
+                ?>
+                <input type="text" name=<?php echo "\"num". $j. "\""?> size="10" value=<?php  echo($num);?>>
+               <input type="text" name=<?php echo "\"page". $j. "\""?> size="10" value=<?php  echo($page);?>>
+               <input type="text" name=<?php echo "\"email". $j. "\" "?>  size="10" value=<?php  echo($email);?>>
+               <input type="text" name= <?php echo "\"nom". $j. "\" "?> size="10" value=<?php  echo($nom);?>>
+               <input type="text" name=<?php echo "\"dat". $j. "\" "?>  size="10" value=<?php  echo($dat);?>>
+                <input type="text" name=<?php echo "\"ville". $j. "\" "?>  size="10" value=<?php  echo($ville);?>>
+               <input type="text" name=<?php echo "\"ip". $j . "\" "?>  size="10" value=<?php  echo($ip);?>> <br>
+                <textarea name=<?php echo "\"commentaire". $j."\" "?>  rows="2" cols="200" wrap="hard"><?php  echo($commentaire);?></textarea><br>
+                <?php echo($j);  ?>
+                <?php if ($accepte=="oui") {?>
+                                   <input type="radio" name=<?php echo "\"accepte". $j ."\" ";?> value="oui" checked /><font size="3" color="#79A200"><b>oui</b></font>
+                                   <input type="radio" name=<?php echo "\"accepte". $j ."\" ";?> value="non"  /> <font size="3" color="#FF0000"><b>non</b></font>
+                <?php    }else{   ?>
+                                    <input type="radio" name=<?php echo "\"accepte". $j ."\" ";?> value="oui"  /><font size="3" color="#79A200"><b>oui</b></font>
+                                    <input type="radio" name=<?php echo "\"accepte". $j ."\" ";?> value="non" checked /><font size="3" color="#FF0000"><b>non</b></font>
+                <?php         }
+                       echo("<br>");
+                       $j+=1;
+
+
+            }       ?>
+                <p>
+             <input type="hidden" name="nbr" value=<?php echo($i);?> />
+             <input type="submit" name="envoyer" />
+
+
+             <?php }
+             else {
+                 echo("������ �������");
+                }
+    $result->closeCursor(); ?>
+
+
+
+                   <?php }
+    else
+    {
+        echo("mot de passe incorrect");
+    }
+
+
+
+     ?>
+
+ </form>
+
+
+</body>
+
+</html>
