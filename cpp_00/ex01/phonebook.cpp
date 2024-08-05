@@ -17,8 +17,19 @@ void PhoneBook::addContact()
         std::cout << "\033[33m" << "Enter nickname : " << "\033[0m";
         std::cin >> input;
         Contacts[index % 8].addNickName(input);
-        std::cout << "\033[33m" << "Enter phone number : " << "\033[0m";
-        std::cin >> input;
+        bool validNumber;
+        do {
+            validNumber = true;
+            std::cout << "\033[33m" << "Enter phone number : " << "\033[0m";
+            std::cin >> input;
+            for (std::string::size_type i = 0; i < input.size(); ++i) {
+                if (!isdigit(input[i])) {
+                    validNumber = false;
+                    std::cout << "\033[31m" << "Invalid phone number. Please enter only numbers.\n" << "\033[0m";
+                    break;
+                }
+            }
+        } while (!validNumber);
         Contacts[index % 8].addPhoneNumber(input);
         std::cout << "\033[33m" << "Enter Darkest Secret : " << "\033[0m";
         std::cin >> input;
