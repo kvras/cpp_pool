@@ -42,7 +42,7 @@ void printWord(std::string str)
 {
 	std::cout << '|';
 	if (str.length() > 10)
-		std::cout << std::setw(10) << str.substr(0, 10) << '.';
+		std::cout << std::setw(10) << str.substr(0, 9) + '.';
 	else
 		std::cout << std::setw(10) << str;
 }

@@ -23,9 +23,6 @@ int     main(int argc, char **argv)
                         y++;
                 }
                 x++;
-                if(x < argc)
-                        std::cout<<' ';
-                else
-                        std::cout<<'\n';
         }
+        std::cout<<'\n';
 }

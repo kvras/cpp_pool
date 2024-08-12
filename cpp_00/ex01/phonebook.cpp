@@ -51,7 +51,7 @@ void PhoneBook::printAll(){
 
     for(int i = 0; i < 8;i++)
     {
-        std::cout<< std::setw(10) << i + 1;
+        std::cout<< std::setw(10) << i;
         Contacts[i].showEssentialInfos();
     }
 }
@@ -63,7 +63,7 @@ int main()
     std::cout << "\033[33m" << "Options : \n" << "\033[0m" << std::endl;
     std::cout << "\033[33m" << "1. ADD\n" << "\033[0m" << std::endl;
     std::cout << "\033[33m" << "2. SEARCH\n" << "\033[0m" << std::endl;
-    std::cout << "\033[33m" << "3. Quit\n" << "\033[0m" << std::endl;
+    std::cout << "\033[33m" << "3. EXIT\n" << "\033[0m" << std::endl;
     while(1)
     {
         std::string input;
@@ -75,7 +75,7 @@ int main()
             PhoneBook.printAll();
             PhoneBook.searchContact();
         }
-        else if (input == "QUIT")
+        else if (input == "EXIT")
         {
             std::cout << "\033[31m" << "Goodbye!\n" << "\033[0m" << std::endl;
             break;

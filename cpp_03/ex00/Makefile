@@ -1,23 +1,22 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = megaphone
-SRC = megaphone.cpp	
-OBJ = $(SRC:.cpp=.o)
-INC = 
+NAME = ClapTrap
+SRC = ClapTrap.cpp	main.cpp	
+OBJ = $(SRC:.c=.o)
+INC = ClapTrap.hpp	
 
 all: $(NAME)
 
 $(NAME): $(INC) $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp $(INC)
-	$(CC) $(FLAGS) -c $< -o $@
+%.o: %.c $(INC)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(NAME)
 
 fclean:	clean
-	rm -rf $(NAME)
 
 re:	fclean all
 
