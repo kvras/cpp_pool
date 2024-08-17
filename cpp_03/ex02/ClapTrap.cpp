@@ -5,16 +5,15 @@ ClapTrap::ClapTrap(std::string str){
   HitPoints = 10;
   AttackDamage = 0;
   name = str;
-  std::cout << "ClapTrap " << name << " is created" << std::endl;
+  std::cout << "ClapTrap " << str << " is created" << std::endl;
 }
 
 ClapTrap::~ClapTrap(){
-  std::cout << "ClapTrap " << name << " is dead" << std::endl;
+  std::cout << "ClapTrap is destructed" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap& instance){
   *this = instance;
-  std::cout << "ClapTrap copy constructeur called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap& instance){

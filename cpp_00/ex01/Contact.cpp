@@ -22,12 +22,14 @@ void Contact::addPhoneNumber(std::string input) {
 
 void Contact::showContact(void)
 {
+    if (firstName.empty())
+        return ;
     printWord(firstName);
     printWord(lastName);
     printWord(nickName);
     printWord(phoneNumber);
     printWord(darkestSecret);
-    std::cout << std::endl;
+    std::cout << "|" << std::endl;
 }
 
 void Contact::showEssentialInfos(void)
@@ -35,7 +37,7 @@ void Contact::showEssentialInfos(void)
     printWord(firstName);
     printWord(lastName);
     printWord(nickName);
-    std::cout << std::endl;
+    std::cout << "|" << std::endl;
 }
 
 void printWord(std::string str)

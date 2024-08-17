@@ -2,22 +2,35 @@
 
 int main()
 {
-    ScavTrap instance1("Pooler");
-    ScavTrap instance2("Student");
+    ScavTrap p1("Da-Hmad");
+    ScavTrap p2("Si-Slimane");
 
-    instance1.attack(instance2.getName());
-    instance2.takeDamage(instance1.getAttackDamage());
+    std::cout << std::endl;
 
+    p1.attack(p2.getName());
+    p2.takeDamage(p1.getAttackDamage());
 
-    instance2.attack(instance1.getName());
-    instance1.takeDamage(instance2.getAttackDamage());
+    std::cout << std::endl;
 
+    p2.attack(p1.getName());
+    p1.takeDamage(p2.getAttackDamage());
 
-    instance1.attack(instance2.getName());
-    instance2.takeDamage(instance1.getAttackDamage());
+    std::cout << std::endl;
 
-    instance1.beRepaired(9);
-    instance2.beRepaired(9);
+    p1.attack(p2.getName());
+    p2.takeDamage(p1.getAttackDamage());
+
+    std::cout << std::endl;
+
+    p1.beRepaired(9);
+    p2.beRepaired(9);
+
+    std::cout << std::endl;
+
+    p1.guardGate();
+    p2.guardGate();
+
+    std::cout << std::endl;
 
     return 0;
-}   
+}

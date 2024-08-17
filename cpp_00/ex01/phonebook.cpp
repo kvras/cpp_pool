@@ -1,5 +1,5 @@
 #include "Phonebook.hpp"
-
+#include <limits>
 PhoneBook::PhoneBook()
 {
     index = 0;
@@ -10,18 +10,26 @@ void PhoneBook::addContact()
         std::string input;
         std::cout << "\033[33m" << "Enter first name : " << "\033[0m";
         std::cin >> input;
+        std::cin.ignore(INT_MAX, '\n');
+        std::cin.clear();
         Contacts[index % 8].addFirstName(input);
         std::cout << "\033[33m" << "Enter last name : " << "\033[0m";
         std::cin >> input;
+        std::cin.ignore(INT_MAX, '\n');
+        std::cin.clear();
         Contacts[index % 8].addLastName(input);
         std::cout << "\033[33m" << "Enter nickname : " << "\033[0m";
         std::cin >> input;
+        std::cin.ignore(INT_MAX, '\n');
+        std::cin.clear();
         Contacts[index % 8].addNickName(input);
         bool validNumber;
         do {
             validNumber = true;
             std::cout << "\033[33m" << "Enter phone number : " << "\033[0m";
             std::cin >> input;
+            std::cin.ignore(INT_MAX, '\n');
+            std::cin.clear();
             for (std::string::size_type i = 0; i < input.size(); ++i) {
                 if (!isdigit(input[i])) {
                     validNumber = false;
@@ -33,6 +41,8 @@ void PhoneBook::addContact()
         Contacts[index % 8].addPhoneNumber(input);
         std::cout << "\033[33m" << "Enter Darkest Secret : " << "\033[0m";
         std::cin >> input;
+        std::cin.ignore(INT_MAX, '\n');
+        std::cin.clear();
         Contacts[index % 8].addDarkestSecret(input);
         index++;
 }
@@ -41,10 +51,14 @@ void PhoneBook::searchContact()
 {
    std::cout << "Enter index of Contact : ";
    std:: cin >> index;
-    if (index >= 0 && index < 8)
+   if (std::cin.eof())
+        std::exit(1);
+    if ((index >= 0 && index < 8) && !std::cin.eof())
          Contacts[index].showContact();
     else
          std::cout << "\033[31m" << "Invalid index\n" << "\033[0m" << std::endl;
+    std::cin.ignore(INT_MAX, '\n');
+    std::cin.clear();
 }
 
 void PhoneBook::printAll(){
@@ -64,11 +78,12 @@ int main()
     std::cout << "\033[33m" << "1. ADD\n" << "\033[0m" << std::endl;
     std::cout << "\033[33m" << "2. SEARCH\n" << "\033[0m" << std::endl;
     std::cout << "\033[33m" << "3. EXIT\n" << "\033[0m" << std::endl;
-    while(1)
+    std::string input;
+    while(!std::cin.eof())
     {
-        std::string input;
         std::cout << "\033[36m" << "Enter your choice : " << "\033[0m";
         std::cin >> input;
+        std::cin.ignore(INT_MAX, '\n');
         if (input == "ADD")
             PhoneBook.addContact();
         else if (input == "SEARCH"){

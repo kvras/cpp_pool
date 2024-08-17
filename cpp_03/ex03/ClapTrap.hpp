@@ -19,6 +19,7 @@ class ClapTrap{
     void beRepaired(unsigned int amount);
     std::string getName(void);
     int getAttackDamage(void);
+    void highFivesGuys(void);
 };
 
 #endif
