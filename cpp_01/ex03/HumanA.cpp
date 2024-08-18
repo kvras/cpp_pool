@@ -1,9 +1,9 @@
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string str, Weapon aWeapon){
+HumanA::HumanA(std::string str, Weapon& aWeapon) : wp(aWeapon){
     name = str;
-    wp = aWeapon;
 };
+
 void HumanA::attack(void){
-    std::cout << name << " attacks with their" << wp.type << std::endl;
+    std::cout << name << " attacks with their " << wp.getType() << std::endl;
 }

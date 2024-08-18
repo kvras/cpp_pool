@@ -1,6 +1,6 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = Zombie
+NAME = zombie
 SRC = main.cpp	Zombie.cpp	zombieHorde.cpp	
 OBJ = $(SRC:.cpp=.o)
 INC = Zombie.hpp	

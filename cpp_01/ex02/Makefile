@@ -1,6 +1,6 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = Print
+NAME = program
 SRC = main.cpp	
 OBJ = $(SRC:.cpp=.o)
 INC = 

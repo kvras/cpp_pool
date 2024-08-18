@@ -11,5 +11,5 @@ int main(){
 	std::cout<< "STRING    : " << &str << "   |   "<< str << std::endl;
 	std::cout<< "stringPTR : " << stringPTR << "   |   "<< *stringPTR << std::endl;
 	std::cout<< "stringREF : " << &stringREF << "   |   "<< stringREF << std::endl;
-	
+
 }

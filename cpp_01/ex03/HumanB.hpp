@@ -3,9 +3,11 @@
 
 #include "Weapon.hpp"
 class HumanB{
-    Weapon& wp;
+    Weapon *wp;
     std::string name;
     public:
+        HumanB(std::string str);
+        void setWeapon(Weapon& bWeapon);
         void attack(void);
 };
 #endif
