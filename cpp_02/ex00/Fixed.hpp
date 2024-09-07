@@ -8,10 +8,12 @@ class Fixed {
         int number;
         const int fraction;
     public :
-        Fixed(int number, int fraction);
+        Fixed();
         Fixed(const Fixed& fixed);
         ~Fixed();
         Fixed& operator=(const Fixed& fixed);
+        int getRawBits(void) const;
+        void setRawBits(int const raw);
 }; 
 
 #endif
