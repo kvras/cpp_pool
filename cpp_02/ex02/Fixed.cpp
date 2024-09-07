@@ -18,7 +18,6 @@ Fixed& Fixed::operator=(const Fixed& fixed) {
     if (this != &fixed) {
         value = fixed.value;
     }
-    //std::cout<< "Copy assignment operator called" << std::endl;
     return *this;
 }
 
@@ -98,7 +97,7 @@ Fixed Fixed::operator/(Fixed instance2){
     return (Fixed((*this).toFloat() / instance2.toFloat()));
 }
 
-Fixed Fixed::operator++(){
+Fixed& Fixed::operator++(){
 
     ++(*this).value;
     return (*this);
@@ -112,7 +111,7 @@ Fixed Fixed::operator++(int){
 }
 
 
-Fixed Fixed::operator--(){
+Fixed& Fixed::operator--(){
 
     --(*this).value;
     return (*this);
@@ -125,9 +124,7 @@ Fixed Fixed::operator--(int){
     return (befor);
 }
 
-
-
 Fixed Fixed::max(Fixed instance1 , Fixed instance2)
 {
-   return (Fixed(std::max(instance1.toFloat(), instance2.toFloat())));
+   return (std::max(instance1.toFloat(), instance2.toFloat()));
 }

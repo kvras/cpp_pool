@@ -1,22 +1,23 @@
 #include "Point.hpp"
 
-Point::Point(){}
+Point::Point() : x(0), y(0){};
+Point::Point(float f_x, float f_y) : x(f_x), y(f_y){};
 
-Point::Point(const float nbr_x, const float nbr_y) : x(nbr_x) , y(nbr_y) {}
-
-Point::Point(const Point& copy) : x(copy.x) , y(copy.y) {}
-
-Point::~Point(){}
-
-Fixed const Point::getX(){
-    return (x);
-}
-Fixed const Point::getY(){
-    return (y);
+Point::Point(const Point& obj) : x(obj.x) , y(obj.y)
+{
 }
 
-Point& Point::operator=(const Point& instance){
-    (void)instance;
+Point& Point::operator=(const Point& obj){
+    (void)obj;
     return *this;
-}
+};
 
+Point::~Point(){};
+
+float Point::getX(){
+    return x.toFloat();
+};
+
+float Point::getY(){
+    return y.toFloat();
+};

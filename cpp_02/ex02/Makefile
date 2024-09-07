@@ -1,6 +1,6 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = Bsp
+NAME = operators
 SRC = Fixed.cpp	main.cpp	
 OBJ = $(SRC:.cpp=.o)
 INC = Fixed.hpp	

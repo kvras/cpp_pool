@@ -1,23 +1,16 @@
-#ifndef POINT_HPP
-#define POINT_HPP
-
-#include "Fixed.hpp"
 #include <cmath>
+#include "Fixed.hpp"
 
-class Point {
+class Point{
     private :
-        Fixed const x;
-        Fixed const y;
+        const Fixed x;
+        const Fixed y;
     public :
         Point();
-        Point(const float x, const float y);
-        Point(const Point& copy);
+        Point(float f_x, float f_y);
+        Point(const Point& obj);
+        Point& operator=(const Point& obj);
         ~Point();
-        Fixed const getX();
-        Fixed const getY();
-        Point& operator=(const Point& instance);
+        float getX();
+        float getY();
 };
-
-bool    bsp(Point const a, Point const b, Point const c, Point const point);
-
-#endif

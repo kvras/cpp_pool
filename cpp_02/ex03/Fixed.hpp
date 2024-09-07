@@ -32,8 +32,8 @@ class Fixed {
         Fixed operator*(Fixed instance2);
         Fixed operator/(Fixed instance2);
 
-        Fixed operator++();
-        Fixed operator--();
+        Fixed& operator++();
+        Fixed& operator--();
         Fixed operator++(int);
         Fixed operator--(int);
         float abs(const Fixed instance);

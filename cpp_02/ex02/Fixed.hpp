@@ -7,7 +7,7 @@
 
 class Fixed {
     private :
-        int value;
+        int  value;
         const int fractional_bits;
     public :
         Fixed();
@@ -32,8 +32,8 @@ class Fixed {
         Fixed operator*(Fixed instance2);
         Fixed operator/(Fixed instance2);
 
-        Fixed operator++();
-        Fixed operator--();
+        Fixed& operator++();
+        Fixed& operator--();
         Fixed operator++(int);
         Fixed operator--(int);
         static Fixed max(Fixed instance1 , Fixed instance2);

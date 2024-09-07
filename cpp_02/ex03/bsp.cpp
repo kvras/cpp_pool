@@ -1,17 +1,41 @@
 #include "Point.hpp"
 
-bool bsp( Point const a, Point const b, Point const c, Point const point){
-    float areaABC = abs((a.getX()*(b.getY()-c.getY()) + b.getX()*(c.getY()-a.getY()) + c.getX()*(a.getY()-b.getY()))/2.0);
+double dotProduct(Point A, Point B) {
+    return A.getX() * B.getX() + A.getY() * B.getY();
+}
 
-    // Calculate the area of the triangle PBC
-    float areaPBC = abs((point.getX()*(b.getY()-c.getY()) + b.getX()*(c.getY()-point.getY()) + c.getX()*(point.getY()-b.getY()))/2.0);
+double magnitude(Point A) {
+    return std::sqrt(A.getX() * A.getX() + A.getY() * A.getY());
+}
 
-    // Calculate the area of the triangle PAC
-    float areaPAC = abs((a.getX()*(point.getY()-c.getY()) + point.getX()*(c.getY()-a.getY()) + c.getX()*(a.getY()-point.getY()))/2.0);
+bool isPointOnLineSegment(Point A, Point B, Point P) {
+    Point AP(P.getX() - A.getX(), P.getY() - A.getY());
+    Point AB(B.getX() - A.getX(), B.getY() - A.getY());
 
-    // Calculate the area of the triangle PAB
-    float areaPAB = abs((a.getX()*(b.getY()-point.getY()) + b.getX()*(point.getY()-a.getY()) + point.getX()*(a.getY()-b.getY()))/2.0);
+    if (dotProduct(AP, AB) < 0) {
+        return false;
+    }
 
-    // If the sum of the areas of PBC, PAC, and PAB is equal to the area of ABC, then P lies inside the triangle
-    return (areaABC == areaPBC + areaPAC + areaPAB);
+    if (dotProduct(AP, AP) > dotProduct(AB, AB)) {
+        return false;
+    }
+
+    return true;
+}
+
+double calculateArea(Point p1, Point p2, Point p3) {
+    return std::abs((p1.getX() * (p2.getY() - p3.getY()) + p2.getX() * (p3.getY()-p1.getY()) + p3.getX()*(p1.getY()-p2.getY()))/2.0);
+}
+
+bool isPointInTriangle(Point p1, Point p2, Point p3, Point p) {
+
+    double areaOriginal = calculateArea(p1, p2, p3);
+    double area1 = calculateArea(p, p2, p3);
+    double area2 = calculateArea(p1, p, p3);
+    double area3 = calculateArea(p1, p2, p);
+    if ((area1 + area2) == areaOriginal || (area1 + area3) == areaOriginal || (area2 + area3) == areaOriginal)
+        return false;
+    if (area1 == areaOriginal || area2 == areaOriginal || area3 == areaOriginal)
+        return false;
+    return areaOriginal == (area1 + area2 + area3);
 }
