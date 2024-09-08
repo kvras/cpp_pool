@@ -3,8 +3,9 @@
 #include "iostream"
 #include "ClapTrap.hpp"
 
-class FragTrap : virtual public ClapTrap{
+class FragTrap : public ClapTrap{
     public :
+        FragTrap();
         FragTrap(std::string str);
         FragTrap(FragTrap& instance);
         FragTrap& operator=(FragTrap& instance);
