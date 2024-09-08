@@ -5,6 +5,7 @@ ClapTrap::ClapTrap(){
   HitPoints = 10;
   AttackDamage = 0;
   name = "?";
+  std::cout << "Default Constructor is called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string str){
@@ -12,9 +13,11 @@ ClapTrap::ClapTrap(std::string str){
   HitPoints = 10;
   AttackDamage = 0;
   name = str;
+  std::cout << "Constructed an instance with name : <" << str << ">"<<std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap& instance){
+  std::cout << "Copy constructor is called" << std::endl;
   *this = instance;
 }
 
@@ -29,7 +32,9 @@ ClapTrap& ClapTrap::operator=(ClapTrap& instance){
   return *this;
 }
 
-ClapTrap::~ClapTrap(){}
+ClapTrap::~ClapTrap(){
+  std::cout<< "ClapTrap destructeur called" << std::endl;
+}
 
 void ClapTrap::attack(const std::string& target){
   if(HitPoints <= 0 || EnergyPoints <= 0){
@@ -37,6 +42,7 @@ void ClapTrap::attack(const std::string& target){
     return;
   }
   std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl;
+  --EnergyPoints;
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
@@ -45,12 +51,13 @@ void ClapTrap::takeDamage(unsigned int amount){
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
-  if (EnergyPoints <= 0){
+  if (EnergyPoints <= 0 || HitPoints <= 0){
     std::cout << "Clap Trap cant get repaired" << std::endl;
     return ;
   }
   std::cout << "ClapTrap " << name << " repair itself, it gets " << amount << " back!"<< std::endl;
   HitPoints+=amount;
+  --EnergyPoints;
 }
 
 const std::string& ClapTrap::getName(void) const {

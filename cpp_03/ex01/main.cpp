@@ -2,35 +2,33 @@
 
 int main()
 {
-    ScavTrap p1("Da-Hmad");
-    ScavTrap p2("Si-Slimane");
+    ScavTrap Pooler("Pooler");
+    ScavTrap Staff("Staff");
 
-    std::cout << std::endl;
+    Pooler.attack(Staff.getName());
+    Staff.takeDamage(Pooler.getAttackDamage());
 
-    p1.attack(p2.getName());
-    p2.takeDamage(p1.getAttackDamage());
+    // std::cout << std::endl;
 
-    std::cout << std::endl;
+    Staff.attack(Pooler.getName());
+    Pooler.takeDamage(Staff.getAttackDamage());
 
-    p2.attack(p1.getName());
-    p1.takeDamage(p2.getAttackDamage());
+    // std::cout << std::endl;
 
-    std::cout << std::endl;
+    Pooler.attack(Staff.getName());
+    Staff.takeDamage(Pooler.getAttackDamage());
 
-    p1.attack(p2.getName());
-    p2.takeDamage(p1.getAttackDamage());
+    // std::cout << std::endl;
 
-    std::cout << std::endl;
+    Pooler.beRepaired(9);
+    Staff.beRepaired(9);
 
-    p1.beRepaired(9);
-    p2.beRepaired(9);
+    // std::cout << std::endl;
 
-    std::cout << std::endl;
+    Pooler.guardGate();
+    Staff.guardGate();
 
-    p1.guardGate();
-    p2.guardGate();
-
-    std::cout << std::endl;
+    // std::cout << std::endl;
 
     return 0;
 }

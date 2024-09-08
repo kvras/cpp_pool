@@ -8,6 +8,7 @@ FragTrap::FragTrap(std::string str) : ClapTrap(str){
 }
 
 FragTrap::FragTrap(FragTrap& instance) : ClapTrap(instance.name){
+    std::cout << "FragTrap Copy constructor is created" << std::endl;
     *this = instance;
 }
 
