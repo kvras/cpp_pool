@@ -11,7 +11,7 @@ DiamondTrap::DiamondTrap(std::string str) : ScavTrap(str) , FragTrap(str) {
     std::cout << "Claptrap " << str << " is now a DiamondTrap" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap& instance) : ScavTrap(instance.name), FragTrap(instance.name) {
+DiamondTrap::DiamondTrap(const DiamondTrap& instance) : ScavTrap(instance.name), FragTrap(instance.name) {
     std::cout << "DiamondTrap Copy constructor is created" << std::endl;
     *this = instance;
 }
