@@ -10,6 +10,7 @@ class ClapTrap{
     int EnergyPoints;
     int AttackDamage;
   public :
+    ClapTrap();
     ClapTrap(std::string str);
     ClapTrap(ClapTrap& instance);
     ~ClapTrap();
@@ -17,8 +18,8 @@ class ClapTrap{
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
-    std::string getName(void);
-    int getAttackDamage(void);
+    const std::string& getName(void) const;
+    const int& getAttackDamage(void) const;
 };
 
 #endif

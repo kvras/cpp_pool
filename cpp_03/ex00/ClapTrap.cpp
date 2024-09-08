@@ -1,13 +1,18 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(){
+  EnergyPoints = 10;
+  HitPoints = 10;
+  AttackDamage = 0;
+  name = "?";
+}
+
 ClapTrap::ClapTrap(std::string str){
   EnergyPoints = 10;
   HitPoints = 10;
   AttackDamage = 0;
   name = str;
 }
-
-ClapTrap::~ClapTrap(){}
 
 ClapTrap::ClapTrap(ClapTrap& instance){
   *this = instance;
@@ -24,33 +29,34 @@ ClapTrap& ClapTrap::operator=(ClapTrap& instance){
   return *this;
 }
 
+ClapTrap::~ClapTrap(){}
+
 void ClapTrap::attack(const std::string& target){
-  if(HitPoints <= 0){
-    std::cout << "ClapTrap " << name << " is dead and cannot attack." << std::endl;
+  if(HitPoints <= 0 || EnergyPoints <= 0){
+    std::cout << "ClapTrap " << name << " cant attack" << std::endl;
     return;
   }
   std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl;
-  --HitPoints;
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
     HitPoints -= amount;
-    std::cout << "ClapTrap "  << name  << " is taking damage!" << std::endl;
+    std::cout << "ClapTrap "  << name  << " is taking " << amount << " Attack damage"<< std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
-  if (HitPoints <= 0){
-    std::cout << "Clap Trap is died cant get repaired" << std::endl;
+  if (EnergyPoints <= 0){
+    std::cout << "Clap Trap cant get repaired" << std::endl;
     return ;
   }
   std::cout << "ClapTrap " << name << " repair itself, it gets " << amount << " back!"<< std::endl;
-  HitPoints+=(amount - 1);
+  HitPoints+=amount;
 }
 
-std::string ClapTrap::getName(void){
+const std::string& ClapTrap::getName(void) const {
   return (name);
 }
 
-int ClapTrap::getAttackDamage(void){
+const int& ClapTrap::getAttackDamage(void) const {
   return (AttackDamage);
 }
