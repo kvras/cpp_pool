@@ -7,10 +7,11 @@
 class ScavTrap : virtual public ClapTrap {
     public :
         ScavTrap();
-        ScavTrap(std::string str);
         ScavTrap(ScavTrap& instance);
         ~ScavTrap();
         ScavTrap& operator=(ScavTrap& instance);
+
+        ScavTrap(std::string str);
         void guardGate(void);
 };
 #endif

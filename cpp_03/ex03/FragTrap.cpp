@@ -1,7 +1,7 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap(){
-    std::cout << "FragTrap default constructor called";
+    std::cout << "Upgraded to FragTrap";
 }
 
 FragTrap::FragTrap(std::string str) : ClapTrap(str){
@@ -12,7 +12,7 @@ FragTrap::FragTrap(std::string str) : ClapTrap(str){
 }
 
 FragTrap::FragTrap(FragTrap& instance) : ClapTrap(instance.name){
-    std::cout << "FragTrap Copy constructor is created" << std::endl;
+    std::cout << "Upgraded to FragTrap" << std::endl;
     *this = instance;
 }
 

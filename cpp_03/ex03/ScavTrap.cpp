@@ -1,7 +1,7 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(){
-    std::cout << "ScavTrap default constructeur called" << std::endl;
+    std::cout << "Upgraded to ScavTrap" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string str) : ClapTrap(str)
@@ -13,11 +13,11 @@ ScavTrap::ScavTrap(std::string str) : ClapTrap(str)
 }
 
 ScavTrap::ScavTrap(ScavTrap& instance) : ClapTrap(instance){
-    std::cout << "ScavTrap copy constructeur called" << std::endl;
+    std::cout << "Upgraded to ScavTrap" << std::endl;
 }
 
 ScavTrap:: ~ScavTrap(){
-    std::cout << "ScavTrap destructeur called" << std::endl;
+    std::cout << "Downgrade from ScavTrap" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(ScavTrap& instance){

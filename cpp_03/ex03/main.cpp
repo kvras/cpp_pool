@@ -2,8 +2,8 @@
 
 int main()
 {
-    ScavTrap    Pooler("Pooler");
-    FragTrap    Student("Student");
+    // ScavTrap    Pooler("Pooler");
+    // FragTrap    Student("Student");
     DiamondTrap staff("Staff");
     
     return 0;

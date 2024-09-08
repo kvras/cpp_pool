@@ -4,11 +4,12 @@ DiamondTrap::DiamondTrap() {
     std::cout << "DiamondTrap default constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string str) : ScavTrap(str) , FragTrap(str) {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
+    std::cout << "DiamondTrap constructor called" << std::endl;
+    this->name = name;
     this->HitPoints = 100;
     this->EnergyPoints = 50;
     this->AttackDamage = 30;
-    std::cout << "Claptrap " << str << " is now a DiamondTrap" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& instance) : ScavTrap(instance.name), FragTrap(instance.name) {
@@ -20,14 +21,14 @@ DiamondTrap::~DiamondTrap() {
     std::cout << "DiamondTrap destructeur called" << std::endl;
 }
 
-DiamondTrap& DiamondTrap::operator=(DiamondTrap& instance) {
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& instance) {
     if (this != &instance) {
         this->name = instance.name;
         this->HitPoints = instance.HitPoints;
         this->EnergyPoints = instance.EnergyPoints;
         this->AttackDamage = instance.AttackDamage;
     }
-    return (instance);
+    return (*this);
 }
 
 void DiamondTrap::whoAmI(void) {
