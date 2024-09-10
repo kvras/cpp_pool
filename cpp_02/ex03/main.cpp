@@ -8,7 +8,7 @@ int main()
     Point a(0, 0);
     Point b(5, 0);
     Point c(0, 5);
-    Point d(0, 1);
+    Point d(-.1, -.1);
     if (isPointInTriangle(a,b,c,d))
         std::cout << "yes";
     else 

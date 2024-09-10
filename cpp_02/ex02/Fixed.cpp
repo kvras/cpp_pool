@@ -21,7 +21,7 @@ Fixed& Fixed::operator=(const Fixed& fixed) {
     return *this;
 }
 
-int Fixed::getRawBits(void) {
+int Fixed::getRawBits(void) const{
     //std::cout <<"getRawBits member function called" << std::endl;
     return value;
 }
@@ -124,7 +124,18 @@ Fixed Fixed::operator--(int){
     return (befor);
 }
 
-Fixed Fixed::max(Fixed instance1 , Fixed instance2)
-{
-   return (std::max(instance1.toFloat(), instance2.toFloat()));
+Fixed& Fixed::min(Fixed& instance1, Fixed& instance2) {
+    return instance1.toFloat() <= instance2.toFloat() ? instance1 : instance2;
+}
+
+const Fixed& Fixed::min(const Fixed& instance1, const Fixed& instance2) {
+    return instance1.toFloat() <= instance2.toFloat() ? instance1 : instance2;
+}
+
+Fixed& Fixed::max(Fixed& instance1, Fixed& instance2) {
+    return instance1.toFloat() >= instance2.toFloat() ? instance1 : instance2;
+}
+
+const Fixed& Fixed::max(const Fixed& instance1, const Fixed& instance2) {
+    return instance1.toFloat() >= instance2.toFloat() ? instance1 : instance2;
 }

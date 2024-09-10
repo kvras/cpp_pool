@@ -16,7 +16,7 @@ class Fixed {
         Fixed(const float bnr);
         ~Fixed();
         Fixed& operator=(const Fixed& fixed);
-        int getRawBits(void) ;
+        int getRawBits(void) const;
         void setRawBits(int const raw);
         float toFloat() const;
         int toInt() const;
@@ -36,9 +36,12 @@ class Fixed {
         Fixed& operator--();
         Fixed operator++(int);
         Fixed operator--(int);
-        float abs(const Fixed instance);
-        static Fixed max(Fixed instance1 , Fixed instance2);
-
+        static Fixed& min(Fixed& instance1, Fixed& instance2);
+        static const Fixed& min(const Fixed& instance1, const Fixed& instance2);
+        static Fixed& max(Fixed& instance1, Fixed& instance2);
+        static const Fixed& max(const Fixed& instance1, const Fixed& instance2);
+        float ft_abs(float number);
+        float ft_sqrt(float number);
 }; 
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed);

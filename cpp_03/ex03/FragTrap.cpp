@@ -1,7 +1,7 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap(){
-    std::cout << "Upgraded to FragTrap";
+    std::cout << "Upgraded to FragTrap" << std::endl;
 }
 
 FragTrap::FragTrap(std::string str) : ClapTrap(str){
@@ -27,7 +27,7 @@ FragTrap& FragTrap::operator=(FragTrap& instance){
 }
 
 FragTrap::~FragTrap(){
-    std::cout << "Downgrade from FragTrap to ClapTrap" <<std::endl;
+    std::cout << "Downgrade from FragTrap" <<std::endl;
 }
 
 void FragTrap::highFivesGuys(){

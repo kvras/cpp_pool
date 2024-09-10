@@ -2,9 +2,10 @@
 
 int main()
 {
-    // ScavTrap    Pooler("Pooler");
     // FragTrap    Student("Student");
-    DiamondTrap staff("Staff");
+    ScavTrap    m3a_staff("Afatimi");
+    DiamondTrap staff("SimoLife");
+    staff.ClapTrap::attack("Afatimi");
     
     return 0;
 }   

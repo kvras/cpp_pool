@@ -1,5 +1,9 @@
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap(){
+    std::cout << "Upgraded to FragTrap" << std::endl;
+}
+
 FragTrap::FragTrap(std::string str) : ClapTrap(str){
     HitPoints = 100;
     EnergyPoints = 100;
@@ -8,7 +12,7 @@ FragTrap::FragTrap(std::string str) : ClapTrap(str){
 }
 
 FragTrap::FragTrap(FragTrap& instance) : ClapTrap(instance.name){
-    std::cout << "FragTrap Copy constructor is created" << std::endl;
+    std::cout << "Upgraded to FragTrap" << std::endl;
     *this = instance;
 }
 
@@ -23,7 +27,7 @@ FragTrap& FragTrap::operator=(FragTrap& instance){
 }
 
 FragTrap::~FragTrap(){
-    std::cout << "Downgrade from FragTrap to ClapTrap" <<std::endl;
+    std::cout << "Downgrade from FragTrap" <<std::endl;
 }
 
 void FragTrap::highFivesGuys(){

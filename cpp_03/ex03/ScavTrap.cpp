@@ -29,3 +29,7 @@ ScavTrap& ScavTrap::operator=(ScavTrap& instance){
 void ScavTrap::guardGate(void){
     std::cout << "ScavTrap has entered in Gate keeper mode." << std::endl;
 }
+
+void ScavTrap::attack(std::string const & target){
+    std::cout << "ScavTrap " << name << " attack " << target << " causing " << AttackDamage << " points of damage!" << std::endl;
+}

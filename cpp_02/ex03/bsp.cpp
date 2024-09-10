@@ -5,7 +5,7 @@ double dotProduct(Point A, Point B) {
 }
 
 double magnitude(Point A) {
-    return std::sqrt(A.getX() * A.getX() + A.getY() * A.getY());
+    return ft_sqrt(A.getX() * A.getX() + A.getY() * A.getY());
 }
 
 bool isPointOnLineSegment(Point A, Point B, Point P) {
@@ -24,7 +24,7 @@ bool isPointOnLineSegment(Point A, Point B, Point P) {
 }
 
 double calculateArea(Point p1, Point p2, Point p3) {
-    return std::abs((p1.getX() * (p2.getY() - p3.getY()) + p2.getX() * (p3.getY()-p1.getY()) + p3.getX()*(p1.getY()-p2.getY()))/2.0);
+    return ft_abs((p1.getX() * (p2.getY() - p3.getY()) + p2.getX() * (p3.getY()-p1.getY()) + p3.getX()*(p1.getY()-p2.getY()))/2.0);
 }
 
 bool isPointInTriangle(Point p1, Point p2, Point p3, Point p) {

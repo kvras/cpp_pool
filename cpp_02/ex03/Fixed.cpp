@@ -21,7 +21,7 @@ Fixed& Fixed::operator=(const Fixed& fixed) {
     return *this;
 }
 
-int Fixed::getRawBits(void) {
+int Fixed::getRawBits(void) const{
     //std::cout <<"getRawBits member function called" << std::endl;
     return value;
 }
@@ -124,11 +124,38 @@ Fixed Fixed::operator--(int){
     return (befor);
 }
 
-Fixed Fixed::max(Fixed instance1 , Fixed instance2)
-{
-   return (std::max(instance1.toFloat(), instance2.toFloat()));
+Fixed& Fixed::min(Fixed& instance1, Fixed& instance2) {
+    return instance1.toFloat() <= instance2.toFloat() ? instance1 : instance2;
 }
 
-float Fixed::abs(Fixed const instance) {
+const Fixed& Fixed::min(const Fixed& instance1, const Fixed& instance2) {
+    return instance1.toFloat() <= instance2.toFloat() ? instance1 : instance2;
+}
+
+Fixed& Fixed::max(Fixed& instance1, Fixed& instance2) {
+    return instance1.toFloat() >= instance2.toFloat() ? instance1 : instance2;
+}
+
+const Fixed& Fixed::max(const Fixed& instance1, const Fixed& instance2) {
+    return instance1.toFloat() >= instance2.toFloat() ? instance1 : instance2;
+}
+
+float Fixed::ft_abs(Fixed const instance) {
     return instance.toFloat() >= 0 ? instance.toFloat() : -instance.toFloat();
+}
+
+float Fixed::ft_sqrt(float number) {
+    if (number < 0) {
+        return -1;
+    } else if (number == 0 || number == 1) {
+        return number;
+    } else {
+        float temp, sqrt;
+        sqrt = number / 2;
+        do {
+            temp = sqrt;
+            sqrt = (temp + (number / temp)) / 2;
+        } while ((temp - sqrt) != 0);
+        return sqrt;
+    }
 }

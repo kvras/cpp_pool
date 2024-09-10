@@ -13,7 +13,7 @@ ClapTrap::ClapTrap(std::string str){
   HitPoints = 10;
   AttackDamage = 0;
   name = str;
-  std::cout << "Constructed an instance with name : <" << str << ">"<<std::endl;
+  std::cout << "Constructed an instance with name : " << str <<std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap& instance){

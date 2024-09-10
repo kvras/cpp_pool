@@ -3,7 +3,7 @@ FLAGS = -Wall -Werror -Wextra -std=c++98
 NAME = Fixed
 SRC = Fixed.cpp	main.cpp	
 OBJ = $(SRC:.cpp=.o)
-INC = Fixed.hpp	
+INC = Fixed.hpp 
 
 all: $(NAME)
 

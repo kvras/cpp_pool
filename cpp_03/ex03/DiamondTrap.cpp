@@ -1,11 +1,13 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() {
-    std::cout << "DiamondTrap default constructor called" << std::endl;
+DiamondTrap::DiamondTrap() : ClapTrap("?_clap_name")
+{
+    name = "?";
+    std::cout << "Upgraded to DiamondTrap" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
-    std::cout << "DiamondTrap constructor called" << std::endl;
+    std::cout << "Upgraded to DiamondTrap" << std::endl;
     this->name = name;
     this->HitPoints = 100;
     this->EnergyPoints = 50;
@@ -13,12 +15,12 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& instance) : ScavTrap(instance.name), FragTrap(instance.name) {
-    std::cout << "DiamondTrap Copy constructor is created" << std::endl;
+    std::cout << "Upgraded to DiamondTrap by copy" << std::endl;
     *this = instance;
 }
 
 DiamondTrap::~DiamondTrap() {
-    std::cout << "DiamondTrap destructeur called" << std::endl;
+    std::cout << "Downgrade from DiamondTrap" << std::endl;
 }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& instance) {
