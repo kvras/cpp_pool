@@ -12,6 +12,7 @@ class Brain{
         ~Brain();
         Brain(const Brain &copy);
         Brain &operator=(const Brain &copy);
+
         std::string getIdea(int i) const;
         void setIdea(int i, std::string idea);
 };

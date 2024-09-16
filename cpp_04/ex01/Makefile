@@ -1,9 +1,9 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = test
-SRC = Animal.cpp	Brain.cpp	main.cpp	
+NAME = brain
+SRC = Animal.cpp	Brain.cpp	Cat.cpp	Dog.cpp	main.cpp	
 OBJ = $(SRC:.cpp=.o)
-INC = Animal.hpp	Brain.hpp	
+INC = Animal.hpp	Brain.hpp	Cat.hpp	Dog.hpp	
 
 all: $(NAME)
 

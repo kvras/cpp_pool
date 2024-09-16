@@ -1,9 +1,9 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 NAME = run
-SRC = Animal.cpp	Cat.cpp	Dog.cpp	main.cpp	WrongAnimal.cpp	WrongCat.cpp	
+SRC = AMateria.cpp	Character.cpp	Cure.cpp	Ice.cpp	main.cpp	MateriaSource.cpp	
 OBJ = $(SRC:.cpp=.o)
-INC = Animal.hpp	Cat.hpp	Dog.hpp	WrongAnimal.hpp	WrongCat.hpp	
+INC = AMateria.hpp	Character.hpp	Cure.hpp	Ice.hpp	ICharacter.hpp	IMateriaSource.hpp	MateriaSource.hpp	
 
 all: $(NAME)
 
