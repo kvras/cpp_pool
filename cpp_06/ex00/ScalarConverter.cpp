@@ -1,67 +1,53 @@
 #include "ScalarConverter.hpp"
-#include <iomanip>
+
 void ScalarConverter::convert(std::string str){
-    double nbr;
+    if (str.length() == 1 && !isdigit(str[0])){
+        std::cout << "char: '" << str[0] << "'" << std::endl;
+        std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
+        std::cout << "float: " << static_cast<float>(str[0]) << "f" << std::endl;
+        std::cout << "double: " << static_cast<double>(str[0]) << std::endl;
+        return;
+    }
+    
     try{
-        nbr = std::stod(str); 
-    }
-    catch(const std::exception& e){
-        if(str != "nan" && str != "nanf" && str != "-inf" && str != "+inf"){
-            std::cout << "char: Impossible" << std::endl;
-            std::cout << "int: Impossible" << std::endl;
-            std::cout << "float: Impossible" << std::endl;
-            std::cout << "double: Impossible" << std::endl;
-            return;
-        }
-    }
-
-    if (str == "nan" || str == "nanf" || str == "-inf" || str == "+inf")
-        std::cout << "char: impossible" << std::endl;
-    else
-    {
+        char c = static_cast<char>(std::stoi(str));
         std::cout << "char: ";
-        if (nbr >= 32 && nbr <= 126)
-            std::cout << "'" << static_cast<char>(nbr) << "'" << std::endl;
-        else
+        if (c < 32 || c > 126)
             std::cout << "Non displayable" << std::endl;
+        else
+            std::cout << "'" << c << "'" << std::endl;
+    }catch(const std::exception &e){
+        std::cout << "char: impossible" << std::endl;
     }
 
-    if (nbr < INT_MIN || nbr > INT_MAX)
-        std::cout << "int: Impossible" << std::endl;
-    else
-    {
-        std::cout << "int: ";
-        if (str == "nan" || str == "nanf" || str == "-inf" || str == "+inf")
-            std::cout << str << std::endl;
-        else
-            std::cout << static_cast<int>(nbr) << std::endl;
+    try{
+        int i = std::stoi(str);
+        std::cout << "int: " << i << std::endl;
+    }catch(const std::exception &e){
+        std::cout << "int: impossible" << std::endl;
     }
 
-    if (nbr < std::numeric_limits<float>::min() || nbr > std::numeric_limits<float>::max())
-        std::cout << "float: Impossible" << std::endl;
-    else
-    {
-        std::cout << "float: ";
-        if (str == "nan" || str == "nanf" || str == "-inf" || str == "+inf")
-            std::cout << str << std::endl;
-        else{
-                if (nbr)
-                    std::cout << static_cast<float>(nbr);
-                
-            }
+
+    try{
+        float f = std::stof(str);
+        std::cout << "float: " << f;
+        if (f - static_cast<int>(f) == 0)
+            std::cout << ".0";
+        std::cout << "f" << std::endl;
+    }catch(const std::exception &e){
+        std::cout << "float: impossible" << std::endl;
     }
-    
-    
-    if (nbr < std::numeric_limits<double>::min() || nbr > std::numeric_limits<double>::max())
-        std::cout << "double: Impossible" << std::endl;
-    else
-    {
-        std::cout << "double: ";
-        if (str == "nan" || str == "nanf" || str == "-inf" || str == "+inf")
-            std::cout << str <<  std::setprecision(1) << std::endl;
-        else
-        {
-            std::cout << static_cast<double>(nbr)  << std::endl;
-        }
+
+
+    try{
+        double d = std::stod(str);
+        std::cout << "double: " << d;
+        if (d - static_cast<int>(d) == 0)
+            std::cout << ".0";
+        std::cout << std::endl;
+
+    }catch(const std::exception &e){
+        std::cout << "double: impossible" << std::endl;
     }
+
 }
