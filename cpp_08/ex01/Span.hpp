@@ -17,5 +17,10 @@ class Span{
         void addNumber(int nbr);
         unsigned long longestSpan();
         unsigned long  shortestSpan();
-        void fillContainer(void);
+        template <typename T>
+        void fillContainer(T iterator1, T iterator2)
+        {
+             vect.insert(vect.end(), iterator1, iterator2);
+        }
+        
 };

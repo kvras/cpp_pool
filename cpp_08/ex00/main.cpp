@@ -8,7 +8,7 @@ int main(){
     container.push_back(4);
 
     try{
-        easyfind(container, 44);}
+        easyfind(container, 4);}
     catch(std::string e){
         std::cout << e << std::endl;
     }

@@ -3,14 +3,9 @@
 
 template <typename T>
 
-int easyfind(T container, int nbr){
-    typename T::iterator it;
-    for(it = container.begin(); it != container.end() ;it++)
-        if (*it == nbr)
-        {
-            std::cout << "founded" << std::endl;
-            return (0);
-        }
-    throw (std::string("Not founded"));
-    return (-1);
+void easyfind(T container, int nbr){
+    if (std::find(container.begin(),container.end(), nbr) == container.end())
+        throw (std::string("Not founded"));
+    else
+        std::cout << "founded\n";
 } 

@@ -1,6 +1,6 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = Span
+NAME = test
 SRC = main.cpp	Span.cpp	
 OBJ = $(SRC:.c=.o)
 INC = Span.hpp	

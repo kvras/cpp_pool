@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "filesystem": "cpp",
-        "stdexcept": "cpp",
-        "string": "cpp",
-        "sstream": "cpp"
-    }
-}
