@@ -10,7 +10,7 @@ int calculate(int nbr1, int nbr2, char oper) {
     }
 }
 
-bool validnum(char *str)
+bool validnum(const char *str)
 {
     for (int i = 0; str && str[i] ; i++){
         if (!isdigit(str[i]))

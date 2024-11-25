@@ -4,4 +4,4 @@
 #include <stack>
 #include <cctype>
 int calculate(int nbr1, int nbr2, char oper);
-bool validnum(char *str);
+bool validnum(const char *str);
