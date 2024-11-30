@@ -29,6 +29,6 @@ int main(int argc, char *argv[])
     double elapsed_time1 = double(end1 - start1) / CLOCKS_PER_SEC;
     std::cout << "\nElapsed time: " << elapsed_time1 << " seconds\n";
     std::cout << "deque : ";
-    for(auto it = deque.begin();it!= deque.end();it++)
+    for(auto it = ret_deque.begin();it!= ret_deque.end();it++)
         std::cout << *it << " ";
 }
