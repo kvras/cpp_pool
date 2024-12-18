@@ -25,9 +25,9 @@ void findAppropriateValue(std::map<std::string ,float> Database, std::string nam
 {
     std::ifstream file(name);
     std::string line;
-    float value;
+    int value;
     if (!file)
-        std::runtime_error("File cant be opened");
+        std::runtime_error("Error: could not open file");
     std::getline(file, line);
     if(line != "date | value")
         std::runtime_error("incorrect First line");
@@ -37,7 +37,7 @@ void findAppropriateValue(std::map<std::string ,float> Database, std::string nam
         {
             std::string::size_type pos = line.find(" | ");
             if (pos == std::string::npos)
-                throw std::runtime_error("Error line format '|'");
+                throw std::runtime_error("Error: bad input => "+ line);
             parseDate(line.substr(0, pos));
             std::string substred = line.substr(pos+3);
             if(substred.size() == 0)
@@ -48,14 +48,18 @@ void findAppropriateValue(std::map<std::string ,float> Database, std::string nam
                 {
                     if(substred.c_str()[i] == '.' && i > 0 && isdigit(substred.c_str()[i - 1]))
                         continue ;
-                    throw std::runtime_error("Error number of btc coins");
+                    throw std::runtime_error("Error: not a positive number.");
                 }
             }
             std::stringstream stream(substred);
             stream >> value;
-            if (value < 0)
+            if (stream.fail())
+                throw std::runtime_error("Error: too large a number.");
+            else if (value < 0)
                 throw std::runtime_error("Error: not a positive number.");
-            std::cout << Database.lower_bound(line.substr(0, pos))->second * value << std::endl;
+        
+            float ret = Database.lower_bound(line.substr(0, pos))->second * value;
+            std::cout << Database.lower_bound(line.substr(0, pos))->first << " => " << value << " = "<< ret << std::endl;
         }
         catch(std::exception &e)
         {
@@ -73,7 +77,7 @@ std::map<std::string, float> initDatabase(){
     std::ifstream file("data.csv");
     std::getline(file, line);
     if(line != "date,exchange_rate")
-        throw std::runtime_error("Error in 1 line of csv file");
+        throw std::runtime_error("Error in csv file");
     while(std::getline(file, line))
     {
         size_t pos = line.find(',');
