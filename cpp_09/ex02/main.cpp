@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     double elapsed_time = double(end - start) / CLOCKS_PER_SEC;
     std::cout << "Elapsed time: " << elapsed_time << " seconds\n";
     std::cout << "vect : ";
-    for(auto it = ret_vect.begin();it!= ret_vect.end();it++)
+    for(std::vector<int>::iterator it = ret_vect.begin();it!= ret_vect.end();it++)
         std::cout << *it << " ";
 
     std::clock_t start1 = std::clock();
@@ -29,6 +29,6 @@ int main(int argc, char *argv[])
     double elapsed_time1 = double(end1 - start1) / CLOCKS_PER_SEC;
     std::cout << "\nElapsed time: " << elapsed_time1 << " seconds\n";
     std::cout << "deque : ";
-    for(auto it = ret_deque.begin();it!= ret_deque.end();it++)
+    for(std::deque<int>::iterator it = ret_deque.begin();it!= ret_deque.end();it++)
         std::cout << *it << " ";
 }

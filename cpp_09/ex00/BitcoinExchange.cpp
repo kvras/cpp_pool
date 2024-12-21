@@ -17,20 +17,23 @@ static void parseDate(std::string date){
     char dash;
     std::stringstream stream(date);
     stream >> year >> dash >> month >> dash >> day;
+
     if (year < 2009 || (month < 1 || month > 12) || (day < 1 || day > 31))
+    {
         throw std::runtime_error("Wrong date format");
+    }
 }
 
 void findAppropriateValue(std::map<std::string ,float> Database, std::string name)
 {
     std::ifstream file(name);
     std::string line;
-    int value;
+    float value;
     if (!file)
-        std::runtime_error("Error: could not open file");
+        throw std::runtime_error("Error: could not open file");
     std::getline(file, line);
     if(line != "date | value")
-        std::runtime_error("incorrect First line");
+        throw std::runtime_error("incorrect First line");
     while(std::getline(file, line))
     {
         try
@@ -53,13 +56,17 @@ void findAppropriateValue(std::map<std::string ,float> Database, std::string nam
             }
             std::stringstream stream(substred);
             stream >> value;
-            if (stream.fail())
+            if (stream.fail() || value > 1000)
                 throw std::runtime_error("Error: too large a number.");
             else if (value < 0)
                 throw std::runtime_error("Error: not a positive number.");
         
-            float ret = Database.lower_bound(line.substr(0, pos))->second * value;
-            std::cout << Database.lower_bound(line.substr(0, pos))->first << " => " << value << " = "<< ret << std::endl;
+            std::map<std::string ,float>::iterator it = Database.upper_bound(line.substr(0, pos));
+            if (it == Database.begin())
+                throw std::runtime_error("Error: bas input => " + line);
+            it--;
+            float ret = (it)->second * value;
+            std::cout << line.substr(0, pos) << " => " << value << " = "<< ret << std::endl;
         }
         catch(std::exception &e)
         {
@@ -100,7 +107,10 @@ std::map<std::string, float> initDatabase(){
         std::stringstream stream(substred);
         stream >> value;
         if (value < 0)
+        {
+            std::cout <<value<<std::endl;;
             throw std::runtime_error("value of btc under 0");
+        }
         else if (stream.fail())
             throw std::runtime_error("number too large");
         Database[key] = value;
